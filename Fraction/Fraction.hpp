@@ -13,7 +13,6 @@ namespace dev{
         T denominator;
     public:
         Fraction(): Fraction(0, 1) {};
-        Fraction(int number): Fraction(number, 1) {};
         Fraction(const T& numerator, const T& denominator);
         Fraction(double number);
         Fraction(const Fraction<T>& fraction): Fraction(fraction.numerator, fraction.denominator) {};
