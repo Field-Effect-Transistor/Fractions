@@ -1,5 +1,10 @@
 #include "Fraction.hpp"
 
+#include <vector>
+#include <sstream>
+#include <string>
+
+
 namespace dev{
     template <typename T>
     Fraction<T>::Fraction(const T& numerator, const T& denominator){
@@ -60,4 +65,79 @@ namespace dev{
         this->denominator = denominator / gcd;
         this->numerator = (SF ? -numerator : numerator) / gcd;
     }
+
+    template<typename U>
+    std::istream& operator>>(std::istream& in, Fraction<U>& fraction){
+        std::vector<std::string> tokens;
+        size_t prev = 0, pos;
+        std::string str;
+        std::string delimiters = " /"; // роздільники: пробіл та "/"
+
+        std::getline(in, str); // отримати ввідний рядок
+
+        while(tokens.size() <= 2) {
+            while ((pos = str.find_first_of(delimiters, prev)) != std::string::npos) {
+                if (pos > prev) {
+                    tokens.push_back(str.substr(prev, pos-prev));
+                }
+                prev = pos + 1;
+            }
+            if (prev < str.length()) {
+                tokens.push_back(str.substr(prev, std::string::npos));
+            }
+        }
+
+        U numerator, denominator;
+        std::istringstream(tokens[0]) >> numerator;
+        std::istringstream(tokens[1]) >> denominator;
+        fraction = Fraction<U>(numerator, denominator);
+        return in;
+    }
+
+    template<typename U>
+    std::ostream& operator<<(std::ostream& out, const Fraction<U>& fraction){
+        if(fraction.denominator == 1)
+            return out << fraction.numerator;
+        return out << fraction.numerator << '/' << fraction.denominator;
+    }
+
+    template<typename U>
+    Fraction<U> operator+(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
+        return Fraction<U>(
+            fraction1.numerator * fraction2.denominator + fraction2.numerator * fraction1.denominator,
+            fraction1.denominator * fraction2.denominator
+        );
+    }
+
+    template<typename U>
+    Fraction<U> operator-(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
+        return Fraction<U>(
+            fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator,
+            fraction1.denominator * fraction2.denominator
+        );
+    }
+
+    template<typename U>
+    Fraction<U> operator*(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
+        return Fraction<U>(
+            fraction1.numerator * fraction2.numerator,
+            fraction1.denominator * fraction2.denominator
+        );
+    }
+
+    template<typename U>
+    Fraction<U> operator/(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
+        return Fraction<U>(
+            fraction1.numerator * fraction2.denominator,
+            fraction1.denominator * fraction2.numerator
+        );
+    }
+
+    template<typename T>
+    Fraction<T> Fraction<T>::operator=(const Fraction<T>& fraction){
+        this->numerator = fraction.numerator;
+        this->denominator = fraction.denominator;
+        return *this;
+    }
+
 }
