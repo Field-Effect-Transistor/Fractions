@@ -1,18 +1,10 @@
-#include <iostream>
-
-class Fraction{
-private:
-    int numerator; //top )
-    int denminator; // bottom )
-
+#include "./Fraction/Fraction.cpp"
+//int
+class Fraction: public dev::Fraction<int>{
 public:
-    Fraction();
-    Fraction(const int numerator, const int denminator);
-    Fraction(const int number): Fraction(number, 1) {};
-    Fraction(const double fraction);
-    Fraction(const Fraction& fraction);
-
-friend Fraction operator+(const Fraction& fraction1, const Fraction& fraction2);
-friend Fraction operator+(const double number, const Fraction& fraction);
-friend Fraction operator+(const Fraction& fraction, const double number);
+        Fraction(int numerator, int denominator): dev::Fraction<int>(numerator, denominator){};
+        Fraction():Fraction(0,1){};
+        Fraction(int number):Fraction(number,1){};
+        Fraction(const Fraction& fraction): Fraction(fraction.numerator, fraction.denominator){};
+        Fraction(double number): dev::Fraction<int>(number){};
 };
