@@ -58,5 +58,13 @@ namespace dev{
         Fraction<T> operator-=(const Fraction<T>& fraction) { return *this = *this - fraction; };
         Fraction<T> operator*=(const Fraction<T>& fraction) { return *this = *this * fraction; }; 
         Fraction<T> operator/=(const Fraction<T>& fraction) { return *this = *this / fraction; };
+
+        friend bool operator==(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return fraction1.numerator == fraction2.numerator && fraction1.denominator == fraction2.denominator; }
+        friend bool operator!=(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return !(fraction1 == fraction2); }
+        friend bool operator<(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return fraction1.numerator * fraction2.denominator < fraction2.numerator * fraction1.denominator; }
+        friend bool operator>(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return fraction1.numerator * fraction2.denominator > fraction2.numerator * fraction1.denominator; }
+        friend bool operator<=(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return !(fraction1 > fraction2); }
+        friend bool operator>=(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return !(fraction1 < fraction2); }
+        
     };
 }
