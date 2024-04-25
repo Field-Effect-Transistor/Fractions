@@ -1,6 +1,6 @@
 #include <iostream>
 
-//convert Fraction<int> to Fraction
+//TODO:convert Fraction<int> to Fraction
 
 namespace dev{
     template<typename T>
@@ -60,10 +60,15 @@ namespace dev{
         friend Fraction<U> operator/(const double number, const Fraction<U>& fraction);
 
         Fraction<T> operator=(const Fraction<T>& fraction);
+        Fraction<T> operator=(const double number);
         Fraction<T> operator+=(const Fraction<T>& fraction);
+        Fraction<T> operator+=(const double number);
         Fraction<T> operator-=(const Fraction<T>& fraction);
+        Fraction<T> operator-=(const double number);
         Fraction<T> operator*=(const Fraction<T>& fraction);
+        Fraction<T> operator*=(const double number);
         Fraction<T> operator/=(const Fraction<T>& fraction);
+        Fraction<T> operator/=(const double number);
 
         template<typename U>
         friend bool operator==(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
