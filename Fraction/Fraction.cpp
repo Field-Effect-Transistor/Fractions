@@ -139,5 +139,47 @@ namespace dev{
         this->denominator = fraction.denominator;
         return *this;
     }
+    
+    template<typename U>
+    bool operator==(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
+        return fraction1.numerator == fraction2.numerator && fraction1.denominator == fraction2.denominator;
+    }
+    template<typename U>
+    bool operator!=(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
+        return !(fraction1 == fraction2);
+    }
+    template<typename U>
+    bool operator<(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
+        return fraction1.numerator * fraction2.denominator < fraction2.numerator * fraction1.denominator;
+    }
+    template<typename U>
+    bool operator>(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
+        return fraction1.numerator * fraction2.denominator > fraction2.numerator * fraction1.denominator;
+    }
+    template<typename U>
+    bool operator<=(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
+        return !(fraction1 > fraction2);
+    }
+    template<typename U>
+    bool operator>=(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
+        return !(fraction1 < fraction2);
+    }
+    template<typename U>
+    bool operator!(const Fraction<U>& fraction) {
+        return fraction.numerator == 0; 
+    }
+
+    template<typename T>
+    Fraction<T> Fraction<T>::operator+=(const Fraction<T>& fraction){ return *this = *this + fraction; };
+    template<typename T>
+    Fraction<T> Fraction<T>::operator-=(const Fraction<T>& fraction) { return *this = *this - fraction; };
+    template<typename T>
+    Fraction<T> Fraction<T>::operator*=(const Fraction<T>& fraction) { return *this = *this * fraction; }; 
+    template<typename T>
+    Fraction<T> Fraction<T>::operator/=(const Fraction<T>& fraction) { return *this = *this / fraction; };
+    template<typename U>
+    Fraction<U> operator-(const Fraction<U>& fraction) {
+        return Fraction<U>(-fraction.getNumerator(), fraction.getDenominator());
+    }
 
 }

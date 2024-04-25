@@ -1,9 +1,6 @@
 #include <iostream>
 
 //convert Fraction<int> to Fraction
-// oerator-(void, Fraction)'
-// operator!(void, Fraction)
-// operator bool()
 
 namespace dev{
     template<typename T>
@@ -27,6 +24,7 @@ namespace dev{
         T getLCM(T a, T b)const;
 
         //operator double(void) const {return (double)numerator / denominator;}
+        operator bool(void) const {return this->numerator != 0;}
         
         template<typename U>
         friend std::ostream& operator<<(std::ostream& out, const Fraction<U>& fraction);
@@ -62,17 +60,27 @@ namespace dev{
         friend Fraction<U> operator/(const double number, const Fraction<U>& fraction) { return Fraction<U>(number) / fraction; };
 
         Fraction<T> operator=(const Fraction<T>& fraction);
-        Fraction<T> operator+=(const Fraction<T>& fraction) { return *this = *this + fraction; };
-        Fraction<T> operator-=(const Fraction<T>& fraction) { return *this = *this - fraction; };
-        Fraction<T> operator*=(const Fraction<T>& fraction) { return *this = *this * fraction; }; 
-        Fraction<T> operator/=(const Fraction<T>& fraction) { return *this = *this / fraction; };
+        Fraction<T> operator+=(const Fraction<T>& fraction);
+        Fraction<T> operator-=(const Fraction<T>& fraction);
+        Fraction<T> operator*=(const Fraction<T>& fraction);
+        Fraction<T> operator/=(const Fraction<T>& fraction);
 
-        friend bool operator==(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return fraction1.numerator == fraction2.numerator && fraction1.denominator == fraction2.denominator; }
-        friend bool operator!=(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return !(fraction1 == fraction2); }
-        friend bool operator<(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return fraction1.numerator * fraction2.denominator < fraction2.numerator * fraction1.denominator; }
-        friend bool operator>(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return fraction1.numerator * fraction2.denominator > fraction2.numerator * fraction1.denominator; }
-        friend bool operator<=(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return !(fraction1 > fraction2); }
-        friend bool operator>=(const Fraction<T>& fraction1, const Fraction<T>& fraction2) { return !(fraction1 < fraction2); }
+        template<typename U>
+        friend bool operator==(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator!=(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator<(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator>(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator<=(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator>=(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator!(const Fraction<U>& fraction);
 
+        template<typename U>
+        friend Fraction<U> operator-(const Fraction<U>& fraction);
     };
 }
