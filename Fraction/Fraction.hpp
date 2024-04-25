@@ -73,15 +73,45 @@ namespace dev{
         template<typename U>
         friend bool operator==(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
+        friend bool operator==(const Fraction<U>& fraction, const double number);
+        template<typename U>
+        friend bool operator==(const double number, const Fraction<U>& fraction);
+
+        template<typename U>
         friend bool operator!=(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator!=(const Fraction<U>& fraction, const double number);
+        template<typename U>
+        friend bool operator!=(const double number, const Fraction<U>& fraction);
+
         template<typename U>
         friend bool operator<(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
+        friend bool operator<(const Fraction<U>& fraction, const double number);
+        template<typename U>
+        friend bool operator<(const double number, const Fraction<U>& fraction);
+
+        template<typename U>
         friend bool operator>(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator>(const Fraction<U>& fraction, const double number);
+        template<typename U>
+        friend bool operator>(const double number, const Fraction<U>& fraction);
+
         template<typename U>
         friend bool operator<=(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
+        friend bool operator<=(const Fraction<U>& fraction, const double number);
+        template<typename U>
+        friend bool operator<=(const double number, const Fraction<U>& fraction);
+
+        template<typename U>
         friend bool operator>=(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
+        template<typename U>
+        friend bool operator>=(const Fraction<U>& fraction, const double number);
+        template<typename U>
+        friend bool operator>=(const double numer, const Fraction<U>& fraction);
+
         template<typename U>
         friend bool operator!(const Fraction<U>& fraction);
 

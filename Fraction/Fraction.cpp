@@ -192,8 +192,28 @@ namespace dev{
     }
 
     template<typename U>
+    bool operator==(const Fraction<U>& fraction, const double number) {
+        return fraction == Fraction<U>(number);
+    }
+
+    template<typename U>
+    bool operator==(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) == fraction;
+    }
+
+    template<typename U>
     bool operator!=(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
         return !(fraction1 == fraction2);
+    }
+
+    template<typename U>
+    bool operator!=(const Fraction<U>& fraction, const double number) {
+        return fraction != Fraction<U>(number);
+    }
+
+    template<typename U>
+    bool operator!=(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) != fraction;
     }
 
     template<typename U>
@@ -202,8 +222,28 @@ namespace dev{
     }
 
     template<typename U>
+    bool operator<(const Fraction<U>& fraction, const double number) {
+        return fraction < Fraction<U>(number);
+    }
+
+    template<typename U>
+    bool operator<(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) < fraction;
+    }
+
+    template<typename U>
     bool operator>(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
         return fraction1.numerator * fraction2.denominator > fraction2.numerator * fraction1.denominator;
+    }
+
+    template<typename U>
+    bool operator>(const Fraction<U>& fraction, const double number) {
+        return fraction > Fraction<U>(number);
+    }
+
+    template<typename U>
+    bool operator>(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) > fraction;
     }
 
     template<typename U>
@@ -212,8 +252,28 @@ namespace dev{
     }
 
     template<typename U>
+    bool operator<=(const Fraction<U>& fraction, const double number) {
+        return fraction <= Fraction<U>(number);
+    }
+
+    template<typename U>
+    bool operator<=(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) <= fraction;
+    }
+
+    template<typename U>
     bool operator>=(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
         return !(fraction1 < fraction2);
+    }
+
+    template<typename U>
+    bool operator>=(const Fraction<U>& fraction, const double number) {
+        return fraction >= Fraction<U>(number);
+    }
+
+    template<typename U>
+    bool operator>=(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) >= fraction;
     }
 
     template<typename U>
