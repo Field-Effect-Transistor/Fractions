@@ -1,7 +1,5 @@
 #include <iostream>
 
-//TODO:convert Fraction<int> to Fraction
-
 namespace dev{
     template<typename T>
     class Fraction{
