@@ -110,12 +110,32 @@ namespace dev{
     }
 
     template<typename U>
-    Fraction<U> operator-(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
+    Fraction<U> operator+(const Fraction<U>& fraction, const double number) {
+        return fraction + Fraction<U>(number);
+    };
+
+    template<typename U>
+    Fraction<U> operator+(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) + fraction;
+    };
+
+    template<typename U>
+    Fraction<U> operator-(const Fraction<U>& fraction1, const Fraction<U>& fraction2) {
         return Fraction<U>(
             fraction1.numerator * fraction2.denominator - fraction2.numerator * fraction1.denominator,
             fraction1.denominator * fraction2.denominator
         );
     }
+
+    template<typename U>
+    Fraction<U> operator-(const Fraction<U>& fraction, const double number) {
+        return fraction - Fraction<U>(number);
+    };
+
+    template<typename U>
+    Fraction<U> operator-(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) - fraction;
+    };
 
     template<typename U>
     Fraction<U> operator*(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
@@ -126,12 +146,33 @@ namespace dev{
     }
 
     template<typename U>
+    Fraction<U> operator*(const Fraction<U>& fraction, const double number) {
+        return fraction * Fraction<U>(number);
+    };
+    
+    template<typename U>
+    Fraction<U> operator*(const double number, const Fraction<U>& fraction) {
+        return fraction * Fraction<U>(number);
+    };
+
+
+    template<typename U>
     Fraction<U> operator/(const Fraction<U>& fraction1, const Fraction<U>& fraction2){
         return Fraction<U>(
             fraction1.numerator * fraction2.denominator,
             fraction1.denominator * fraction2.numerator
         );
     }
+
+    template<typename U>
+    Fraction<U> operator/(const Fraction<U>& fraction, const double number) {
+        return fraction / Fraction<U>(number);
+    };
+    
+    template<typename U>
+    Fraction<U> operator/(const double number, const Fraction<U>& fraction) {
+        return Fraction<U>(number) / fraction;
+    };
 
     template<typename T>
     Fraction<T> Fraction<T>::operator=(const Fraction<T>& fraction){

@@ -24,7 +24,7 @@ namespace dev{
         T getLCM(T a, T b)const;
 
         //operator double(void) const {return (double)numerator / denominator;}
-        operator bool(void) const {return this->numerator != 0;}
+        //operator bool(void) const {return this->numerator != 0;}
         
         template<typename U>
         friend std::ostream& operator<<(std::ostream& out, const Fraction<U>& fraction);
@@ -34,30 +34,30 @@ namespace dev{
         template<typename U>
         friend Fraction<U> operator+(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
-        friend Fraction<U> operator+(const Fraction<U>& fraction, const double number) { return fraction + Fraction<U>(number); };
+        friend Fraction<U> operator+(const Fraction<U>& fraction, const double number);
         template<typename U>
-        friend Fraction<U> operator+(const double number, const Fraction<U>& fraction) { return Fraction<U>(number) + fraction; };
+        friend Fraction<U> operator+(const double number, const Fraction<U>& fraction);
 
         template<typename U>
         friend Fraction<U> operator-(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
-        friend Fraction<U> operator-(const Fraction<U>& fraction, const double number) { return fraction - Fraction<U>(number); };
+        friend Fraction<U> operator-(const Fraction<U>& fraction, const double number);
         template<typename U>
-        friend Fraction<U> operator-(const double number, const Fraction<U>& fraction) { return Fraction<U>(number) - fraction; };
+        friend Fraction<U> operator-(const double number, const Fraction<U>& fraction);
 
         template<typename U>
         friend Fraction<U> operator*(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
-        friend Fraction<U> operator*(const Fraction<U>& fraction, const double number) { return fraction * Fraction<U>(number); };
+        friend Fraction<U> operator*(const Fraction<U>& fraction, const double number);
         template<typename U>
-        friend Fraction<U> operator*(const double number, const Fraction<U>& fraction) { return fraction * Fraction<U>(number); };
+        friend Fraction<U> operator*(const double number, const Fraction<U>& fraction);
 
         template<typename U>
         friend Fraction<U> operator/(const Fraction<U>& fraction1, const Fraction<U>& fraction2);
         template<typename U>
-        friend Fraction<U> operator/(const Fraction<U>& fraction, const double number) { return fraction / Fraction<U>(number); };
+        friend Fraction<U> operator/(const Fraction<U>& fraction, const double number);
         template<typename U>
-        friend Fraction<U> operator/(const double number, const Fraction<U>& fraction) { return Fraction<U>(number) / fraction; };
+        friend Fraction<U> operator/(const double number, const Fraction<U>& fraction);
 
         Fraction<T> operator=(const Fraction<T>& fraction);
         Fraction<T> operator+=(const Fraction<T>& fraction);
