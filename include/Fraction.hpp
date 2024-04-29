@@ -1,4 +1,4 @@
-#include "./Fraction/Fraction_.cpp"
+#include "Fraction/Fraction.hpp"
 
 typedef dev::Fraction<short> ShortFraction;
 typedef dev::Fraction<int> Fraction;
